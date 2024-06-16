@@ -10,14 +10,16 @@ const refs = {
 };
 refs.loader.className = 'loader';
 
-function showLoader() {
+export function showLoader() {
   refs.loader.classList.remove('hidden');
 }
 
-function hideLoader() {
+export function hideLoader() {
   refs.loader.classList.add('hidden');
 }
+
 hideLoader();
+
 const lightbox = new simpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
