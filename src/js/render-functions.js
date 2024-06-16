@@ -22,7 +22,7 @@ const lightbox = new simpleLightbox('.gallery a', {
   captionsData: 'alt',
   captionDelay: 250,
 });
-showLoader();
+
 refs.formElem.addEventListener('submit', e => {
   e.preventDefault();
   const searchName = e.target.elements.query.value.trim();
