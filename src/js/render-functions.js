@@ -3,11 +3,12 @@ import simpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 import { getImages } from './pixabay-api.js';
 
-const refs = {
+export const refs = {
   formElem: document.querySelector('form'),
   galleryElem: document.querySelector('.gallery'),
   loader: document.querySelector('.loader'),
 };
+
 refs.loader.className = 'loader';
 
 export function showLoader() {
@@ -17,35 +18,6 @@ export function showLoader() {
 export function hideLoader() {
   refs.loader.classList.add('hidden');
 }
-
-hideLoader();
-
-const lightbox = new simpleLightbox('.gallery a', {
-  captionsData: 'alt',
-  captionDelay: 250,
-});
-
-refs.formElem.addEventListener('submit', e => {
-  e.preventDefault();
-  const searchName = e.target.elements.query.value.trim();
-
-  showLoader();
-
-  refs.galleryElem.innerHTML = '';
-
-  getImages(searchName)
-    .then(data => {
-      const markup = imagesTemplate(data);
-      refs.galleryElem.innerHTML = markup;
-      lightbox.refresh();
-    })
-    .catch(error => {
-      console.log(error);
-    })
-    .finally(() => {
-      hideLoader();
-    });
-});
 
 export function imageTemplate({
   largeImageURL,

@@ -3,7 +3,6 @@
 import iziToast from 'izitoast';
 import closeImageURL from '../img/close.png';
 
-const BASE_URL = 'https://pixabay.com';
 let userSymbol;
 
 export function getImages(userSymbol) {
