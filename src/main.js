@@ -39,7 +39,16 @@ refs.formElem.addEventListener('submit', e => {
       lightbox.refresh();
     })
     .catch(error => {
-      console.log(error);
+      iziToast.error({
+        message:
+          'Sorry, there was an error fetching images. Please try again later!',
+        maxWidth: '322px',
+        iconUrl: closeImageURL,
+        backgroundColor: '#EF4040',
+        messageColor: '#fff',
+        titleColor: '#fff',
+        theme: 'dark',
+      });
     })
     .finally(() => {
       hideLoader();
